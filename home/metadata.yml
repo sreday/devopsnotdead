@@ -1,0 +1,24 @@
+base_path: "https://www.devopsnotdead.com/"
+base_folder: "static"
+twitter_url: https://twitter.com/devopsnotdead_com
+linkedin_url: https://www.linkedin.com/company/devopsnotdead/
+youtube_url: https://www.youtube.com/@devopsnotdead
+mailto: "mailto:hello@devopsnotdead.com"
+
+hero_pictures:
+- ../photos/london-2022-0.jpg
+
+counts:
+ events: 1
+ countries: 1
+ speakers: 10+
+ attendees: 200+
+
+
+events: []
+
+events_past: []
+
+meetups: []
+
+meetups_past: []
