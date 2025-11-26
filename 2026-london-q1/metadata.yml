@@ -1,12 +1,12 @@
 # TODO - change these
 
 # start time includes timezone at the end relative to UTC
-start_time: "2026-03-12T10:00:00+00:00"
+start_time: "2026-03-13T10:00:00+00:00"
 # before - no schedule
 # active - schedule
 # after  - hide ticket sales
 event_state: before
-date_string: "March 12, 2026"
+date_string: "March 13, 2026"
 location_string: "London, UK"
 # get this from the event url
 luma_evt: evt-zbxt1dAzUOUvPJY
@@ -33,12 +33,14 @@ breaks:
   duration: 60
   comment: Main lobby
   talks_before: 3
-- title: Happy Hour by Imply -- grab a beer!
+- title: Wrap up
   duration: 30
   comment: Main lobby
   talks_before: 5
 
 sponsors:
+  - logo: harness.png
+    url: https://www.harness.io/
   - logo: hockeystick.png
     url: https://www.hockeystick.show
 
@@ -52,7 +54,7 @@ hero_pictures:
 # probably don't need changing
 base_path: "https://www.sreday.com/"
 base_folder: "static"
-twitter_url: https://twitter.com/sreday_com
-linkedin_url: https://www.linkedin.com/company/sreday/
-youtube_url: https://www.youtube.com/@sreday
-mailto: "mailto:hello@sreday.com"
+twitter_url: https://twitter.com/devopsnotdead
+linkedin_url: https://www.linkedin.com/company/devopsnotdead/
+youtube_url: https://www.youtube.com/@devopsnotdead
+mailto: "mailto:mark@devopsnotdead.com"
