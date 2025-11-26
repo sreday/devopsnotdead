@@ -9,13 +9,23 @@ hero_pictures:
 - ../photos/london-2022-0.jpg
 
 counts:
- events: 1
- countries: 1
+ events: 2
+ countries: 2
  speakers: 10+
- attendees: 200+
+ attendees: 100+
 
 
-events: []
+events:
+
+  - name: SREday NYC 2026 Q1
+    location: Harness, New York, US
+    photo_url: ./assets/images/events/sreday-2026-nyc-q1.png
+    url: ./2026-nyc-q1/
+
+  - name: SREday London 2026 Q1
+    location: Canary Wharf, London, UK
+    photo_url: ./assets/images/events/sreday-2026-london-q1.png
+    url: ./2026-london-q1/
 
 events_past: []
 
