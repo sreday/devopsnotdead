@@ -17,12 +17,12 @@ counts:
 
 events:
 
-  - name: DND NYC 2026 Q1
+  - name: DevOps Not Dead NYC 2026 Q1
     location: Harness, New York, US
     photo_url: ./assets/images/events/dnd-2026-nyc-q1.png
     url: ./2026-nyc-q1/
 
-  - name: DND London 2026 Q1
+  - name: DevOps Not Dead London 2026 Q1
     location: Canary Wharf, London, UK
     photo_url: ./assets/images/events/dnd-2026-london-q1.png
     url: ./2026-london-q1/
