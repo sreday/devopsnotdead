@@ -26,7 +26,7 @@ rooms:
 - mini room
 
 breaks:
-- title: Coffee break
+- title: Sustenance & Sanity (Coffee break)
   duration: 30
   comment: Main lobby
   talks_before: 0
