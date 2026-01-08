@@ -30,7 +30,11 @@ breaks:
   duration: 30
   comment: Main lobby
   talks_before: 0
-- title: Lunch & networking
+- title: Breaking Bread & Making Acquaintance (Lunch)
+  duration: 60
+  comment: Main lobby
+  talks_before: 4
+- title: Crawling Among Friends & Supporters (Networking)
   duration: 60
   comment: Main lobby
   talks_before: 4
