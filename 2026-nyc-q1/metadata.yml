@@ -1,0 +1,53 @@
+base_path: "https://www.devopsnotdead.com/"
+base_folder: "static"
+# before - no schedule
+# active - schedule
+# after  - hide tickets
+event_state: active
+start_time: "2026-02-26T09:00:00-05:00"
+date_string: "February 27, 2026"
+location_string: "Harness, New York, US"
+
+cfp_url: https://www.papercall.io/devopsnotdead-2026-nyc-q1
+twitter_url: https://twitter.com/evopsnotdead_com
+linkedin_url: https://www.linkedin.com/company/evopsnotdead/
+youtube_url: https://www.youtube.com/@evopsnotdead
+luma_evt: evt-7pxs7Mtyado8EsE
+mailto: "mailto:mark@devopsnotdead.com"
+
+# the number of tracks needs to be the same per day
+# the tracks will be taken in the order they appear in the csv file and spread equally on both days
+days: 1
+attendees: 80
+speakers: 10+
+
+rooms:
+- main room
+- mini room
+
+breaks:
+- title: Sustenance & Sanity (Coffee break)
+  duration: 30
+  comment: Main lobby
+  talks_before: 0
+- title: Breaking Bread & Making Acquaintance (Lunch)
+  duration: 60
+  comment: Main lobby
+  talks_before: 4
+- title: Crawling Among Friends & Supporters (Networking)
+  duration: 30
+  comment: Main lobby
+  talks_before: 4
+
+
+sponsors:
+  - logo: harness.png
+    url: https://www.harness.io/
+  - logo: cribl.png
+    url: https://cribl.io/
+  - logo: hockeystick.png
+    url: https://www.hockeystick.show/
+
+
+hero_pictures:
+- ../photos/london-2022-0.jpg

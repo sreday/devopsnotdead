@@ -1,0 +1,34 @@
+base_path: "https://www.devopsnotdead.com/"
+base_folder: "static"
+twitter_url: https://twitter.com/devopsnotdead_com
+linkedin_url: https://www.linkedin.com/company/devopsnotdead/
+youtube_url: https://www.youtube.com/@devopsnotdead
+mailto: "mailto:mark@devopsnotdead.com"
+
+hero_pictures:
+- ../photos/london-2022-0.jpg
+
+counts:
+ events: 2
+ countries: 2
+ speakers: 10+
+ attendees: 100+
+
+
+events:
+
+  - name: DevOps Not Dead NYC 2026 Q1
+    location: Harness, New York, US
+    photo_url: ./assets/images/events/dnd-2026-nyc-q1.png
+    url: ./2026-nyc-q1/
+
+  - name: DevOps Not Dead London 2026 Q1
+    location: Canary Wharf, London, UK
+    photo_url: ./assets/images/events/dnd-2026-london-q1.png
+    url: ./2026-london-q1/
+
+events_past: []
+
+meetups: []
+
+meetups_past: []
