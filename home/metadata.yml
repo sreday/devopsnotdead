@@ -32,3 +32,54 @@ events_past: []
 meetups: []
 
 meetups_past: []
+
+description_template: |
+ ### DevOps sorcerers, barbarians and fantastic creatures, assemble in {{ location }} on {{ start_date }}!
+ 
+ **DevOps Not Dead** is an in-person conference bringing together practitioners across DevOps, operations, cloud, reliability, and security to explore a big question: is DevOps dead, misunderstood, or very much alive?
+ 
+ This event takes a fun and unusual approach, blending a serious tech conference with the atmosphere of a Dungeons and Dragons-inspired tabletop adventure.
+ 
+ Please note: this is an **in-person-only event**, with no option to present remotely. You’ll need to be present in {location} on {date} in order to deliver your talk.
+ 
+ [Take a look at the lineup so far]({{ website }})
+ 
+ Questions? Want to bring DND to your city? Ping **[mark@devopsnotdead.com](mailto:mark@devopsnotdead.com?subject=Question%20about%20{{ name }})**
+ ---
+ 
+ #### Who is this for?
+ 
+ - Do you work in DevOps, operations, cloud, reliability, or security?
+ - Are you questioning what DevOps really means today, beyond buzzwords and culture slides?
+ - Do you enjoy sharing real experiences, challenges, and opinions about how teams actually work?
+ 
+ If you answered yes to any of these, join us for a day of learning, discussion, and shared experience.
+ 
+ You will connect with experienced practitioners, peers facing similar challenges, and a community that values honest conversations, curiosity, and a bit of playful chaos.
+ 
+ ---
+ 
+ #### Topics
+ 
+ We want to hear about the real world of DevOps and adjacent disciplines, including:
+ 
+ - Lessons learned from modern DevOps practice, including what worked, what failed, and what changed over time.
+ - Deep dives into tools, platforms, and systems that shape today’s DevOps landscape.
+ - Culture and collaboration, and how teams really work across development, operations, and reliability.
+ - Cloud, platform, and infrastructure stories from design to production.
+ - Reliability, resilience, and security challenges in complex systems.
+ - Interactive and experimental formats, including gamified activities
+ 
+ Alongside technical sessions, you can expect fantasy-themed elements such as decorations, simple costumes, themed trinkets, and interactive activities that keep the day engaging without losing technical depth.
+ 
+ ---
+ 
+ #### Am I the right speaker for this?
+ 
+ If you work in DevOps or anywhere around it, then the answer is yes.
+ 
+ We welcome speakers from diverse backgrounds and all walks of life, not just traditional DevOps roles, but anyone working on operations, cloud, reliability, or security in a broader sense. We accept a wide range of session types, as long as they align with the core themes of the conference.
+ 
+ Questions? Want to bring DevOps Not Dead to your city? Please ping **mark@devopsnotdead.com**.
+ 
+ Thank you for presenting with us!
