@@ -44,9 +44,6 @@ description_template: |
  
  [Take a look at the lineup so far]({{ website }})
  
- Questions? Want to bring DND to your city? Ping **[mark@devopsnotdead.com](mailto:mark@devopsnotdead.com?subject=Question%20about%20{{ name }})**
- ---
- 
  #### Who is this for?
  
  - Do you work in DevOps, operations, cloud, reliability, or security?
