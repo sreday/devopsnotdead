@@ -40,7 +40,7 @@ description_template: |
  
  This event takes a fun and unusual approach, blending a serious tech conference with the atmosphere of a Dungeons and Dragons-inspired tabletop adventure.
  
- Please note: this is an **in-person-only event**, with no option to present remotely. You’ll need to be present in {location} on {date} in order to deliver your talk.
+ Please note: this is an **in-person-only event**, with no option to present remotely. You’ll need to be present in {{ location }} on {{ start_date }} in order to deliver your talk.
  
  [Take a look at the lineup so far]({{ website }})
  
