@@ -85,6 +85,31 @@ Department level risks include:
 
 - Analogy to financial stop-loss: Panic fixes cause bigger losses; structured calm wins 
 - Practical takeaways for stress-free recovery ",,"Oguzhan is a 12+ year Software Engineer and Solutions Architect, specialising in cloud infrastructure (AWS, Kubernetes, Terraform/ArgoCD). With extensive experience in high-stakes financial systems, he's managed production outages and built resilient pipelines across fintech and beyond. Based in London, UK."
+,confirmed,Jake Page,2,1,MetalBear,Jake Page DnD.png,https://www.linkedin.com/in/jake-page-aws/,,,,Validation Valley: A Quest Through Modern Development's Unsolved Bottlenecks,"AI has gotten really good at writing code, but it's also exposed some bottlenecks that were always there, just not at the front of our minds.
+
+In Kubernetes environments especially, code rarely works on the first try. You're dealing with services, APIs, auth, infrastructure that all need to play nicely together. And AI
+agents? They still have to wait for CI/CD pipelines just like the rest of us. The bottleneck has quietly shifted from writing code to validating it.
+
+This talk doesn't have slides. Instead, we'll progress through a pixel-art RPG game together, where we’ll try to make our way through bottleneck canyon, exploring two domains where these bottlenecks have become impossible to ignore: open
+source security (where maintainers are overwhelmed by low-quality, often AI-generated reports) and the inner developer loop (where faster code generation hasn't made the waiting
+any shorter).
+
+By the end of the quest, we'll arrive at a common thread connecting both problems, and I'll demo how tools like mirrord let AI agents test code directly against live Kubernetes
+environments, validating and self-correcting without waiting in line.
+
+It's a bit different. Hopefully it's also useful.","AI has gotten really good at writing code, but it's also exposed some bottlenecks that were always there, just not at the front of our minds.
+
+In Kubernetes environments especially, code rarely works on the first try. You're dealing with services, APIs, auth, infrastructure that all need to play nicely together. And AI
+agents? They still have to wait for CI/CD pipelines just like the rest of us. The bottleneck has quietly shifted from writing code to validating it.
+
+This talk doesn't have slides. Instead, we'll progress through a pixel-art RPG game together, where we’ll try to make our way through bottleneck canyon, exploring two domains where these bottlenecks have become impossible to ignore: open
+source security (where maintainers are overwhelmed by low-quality, often AI-generated reports) and the inner developer loop (where faster code generation hasn't made the waiting
+any shorter).
+
+By the end of the quest, we'll arrive at a common thread connecting both problems, and I'll demo how tools like mirrord let AI agents test code directly against live Kubernetes
+environments, validating and self-correcting without waiting in line.
+
+It's a bit different. Hopefully it's also useful.","Jake Page is a former high-school teacher turned DevOps engineer and now DevRel Engineer. Over the past five years, he has focused on cloud-native developer tooling across packaging, software delivery, FinOps, testing, and debugging, often with a strong Kubernetes angle. Now based in Lisbon, Jake is passionate about learning by doing and frequently speaks at meetups and conferences."
 ,confirmed,Rafael Moraes Natali,3,1,Marionete,Rafael Moraes Natali DnD.png,http://www.linkedin.com/in/rafaelnatali,,,,I Fought the Pod and the Pod Won: Breaking and Defending Kubernetes from Within,"Kubernetes gives us abstraction and power—but with great YAML comes great responsibility. In this talk, we’ll walk through live demos of real-world misconfigurations that allow attackers to escape containers and tamper with the host. You’ll see exactly what happens when Pods run in privileged mode, use hostPath volumes carelessly, or retain excess Linux capabilities. We’ll also show how to detect these attacks in real time using Falco, and enforce safety nets with Pod Security Admission. If you’ve ever wondered ""what’s the worst that could happen?""—this session answers that with receipts.",,"As a DevOps Engineer, I aim to enable developers and businesses to focus on their core competencies by tackling infrastructure challenges. Automation is fundamental to solve these challenges so, technologies such as Docker, Terraform, and Kubernetes are strong skills of mine. Also, I hold AWS Solutions Architect Professional, AWS DevOps Professional, GCP DevOps professional, Terraform Associate certifications. 
 
 I have held several senior positions in infrastructure, application support, and cloud computing - AWS and GCP - delivery in both startups and large corporations. This journey took me to live and work in 3 different countries: Brazil, Costa Rica, and Portugal, providing me constructive cultural exposure.
@@ -122,3 +147,8 @@ If you’re building secure systems at scale, authorization becomes the true fou
 Husband of Nataly and proud dad of Aurora — named after AWS Aurora, and also because he dreams of traveling with his family to see the Aurora Borealis.
 
 Passionate about technology and people, he helps companies build resilient, efficient, and secure cloud systems that empower teams to innovate with confidence."
+,confirmed,Emiliano Mancuso,3,1,Fresha,Emiliano Mancuso DnD.png,https://www.linkedin.com/in/emilianomancuso,,,,"Not Dead, Just Needs a Doctor","Our databases weren't dead, but they weren't healthy either. And I was tired of answering the same questions. ""Is this index being used?"" ""Why is vacuum not running?"" ""What version of Postgres are we on?"" So I built `pgdoctor` - a CLI with opinionated health checks for PostgreSQL. Each check explains _what_ it found and _why_ it matters, but also gives you the exact command to fix it - because most engineers just want to know what to do.
+
+It was a simple tool for a specific problem. But then our CTO picked up the pattern and built repo-doctor - same architecture, different domain. It analyses repositories for good and bad signals: Kubernetes configs, library choices, ownership files, documentation, dev setup. Each service gets a score. We collect those scores into a scoreboard visible to the whole engineering organisation, and suddenly we have a shared language to talk to product about technical health.
+
+The architecture was simple enough to copy, the pattern was clear enough to follow, and frameworks like Bubbletea made building polished terminal interfaces surprisingly fast.",,"Emiliano Mancuso led Platform & Infrastructure at Fresha, designing the company’s core data and infrastructure foundations. His work bridges platform engineering and distributed systems to enable scalable, high-performance services across Fresha’s global platform. Originally from Argentina, Emiliano brings deep expertise in data architecture and a passion for building reliable systems."
