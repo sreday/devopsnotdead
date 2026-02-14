@@ -53,3 +53,18 @@ sponsors:
 
 hero_pictures:
 - ../photos/london-2022-0.jpg
+
+# brand identity
+brand_name: "DevOpsNotDead"
+brand_domain: "devopsnotdead.com"
+brand_description: "Conference on DevOps, Cloud, rock & roll!"
+brand_tagline: "DevOps, Cloud, rock & roll!"
+brand_og_pitch: "Probably the coolest DevOps conference in"
+brand_color: "#592f1a"
+brand_twitter: "@devopsnotdead_com"
+brand_ga_id: "G-CQ2KV6LK8G"
+brand_gads_id: "AW-17496979257"
+brand_twt_pixel: "ofo1h"
+logo_image: "/assets/images/DnD_logo.png"
+
+# probably don't need changing
