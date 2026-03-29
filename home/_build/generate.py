@@ -45,14 +45,14 @@ context["testimonials"] = read_csv("./_db/testimonials.csv")
 context["ambassadors"] = read_csv("./_db/ambassadors.csv")
 
 # SPONSOR LOGOS CAROUSEL
-# Scan all event subfolders (../20*/assets/images/sponsors/) for logos, deduplicate, sort
+# Scan root sponsors/ folder for logos, deduplicate, sort
 print(DIVIDER)
-print("Scanning sponsor logos from event subfolders")
+print("Scanning sponsor logos from sponsors/ folder")
 SPONSORS_DEST = BASE_FOLDER + "/sponsors"
 os.makedirs(SPONSORS_DEST, exist_ok=True)
 seen = set()
 sponsor_logos = []
-for logo_path in sorted(glob.glob("../20*/assets/images/sponsors/*.png") + glob.glob("../20*/assets/images/sponsors/*.jpg")):
+for logo_path in sorted(glob.glob("../sponsors/*.png") + glob.glob("../sponsors/*.jpg")):
     filename = os.path.basename(logo_path)
     key = filename.lower()
     if key not in seen:
