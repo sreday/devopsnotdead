@@ -1,3 +1,4 @@
+brand_name: "DevOpsNotDead"
 base_path: "https://www.devopsnotdead.com/"
 base_folder: "static"
 twitter_url: https://twitter.com/devopsnotdead_com
@@ -9,7 +10,7 @@ hero_pictures:
 - ../photos/london-2022-0.jpg
 
 counts:
- events: 2
+ events: 4
  countries: 2
  speakers: 10+
  attendees: 100+
@@ -17,18 +18,66 @@ counts:
 
 events:
 
-  - name: DevOps Not Dead NYC 2026 Q1
-    location: Harness, New York, US
-    photo_url: ./assets/images/events/dnd-2026-nyc-q1.png
-    url: ./2026-nyc-q1/
-
   - name: DevOps Not Dead London 2026 Q1
     location: Canary Wharf, London, UK
     photo_url: ./assets/images/events/dnd-2026-london-q1.png
     url: ./2026-london-q1/
 
-events_past: []
+events_past:
+
+  - name: DevOps Not Dead NYC 2026 Q1
+    location: Harness, New York, US
+    photo_url: ./assets/images/events/dnd-2026-nyc-q1.png
+    url: ./2026-nyc-q1/
 
 meetups: []
 
 meetups_past: []
+
+description_template: |
+ ### DevOps sorcerers, barbarians and fantastic creatures, assemble in {{ location }} on {{ start_date }}!
+ 
+ **DevOps Not Dead** is an in-person conference bringing together practitioners across DevOps, operations, cloud, reliability, and security to explore a big question: is DevOps dead, misunderstood, or very much alive?
+ 
+ This event takes a fun and unusual approach, blending a serious tech conference with the atmosphere of a Dungeons and Dragons-inspired tabletop adventure.
+ 
+ Please note: this is an **in-person-only event**, with no option to present remotely. You’ll need to be present in {{ location }} on {{ start_date }} in order to deliver your talk.
+ 
+ [Take a look at the lineup so far]({{ website }})
+ 
+ #### Who is this for?
+ 
+ - Do you work in DevOps, operations, cloud, reliability, or security?
+ - Are you questioning what DevOps really means today, beyond buzzwords and culture slides?
+ - Do you enjoy sharing real experiences, challenges, and opinions about how teams actually work?
+ 
+ If you answered yes to any of these, join us for a day of learning, discussion, and shared experience.
+ 
+ You will connect with experienced practitioners, peers facing similar challenges, and a community that values honest conversations, curiosity, and a bit of playful chaos.
+ 
+ ---
+ 
+ #### Topics
+ 
+ We want to hear about the real world of DevOps and adjacent disciplines, including:
+ 
+ - Lessons learned from modern DevOps practice, including what worked, what failed, and what changed over time.
+ - Deep dives into tools, platforms, and systems that shape today’s DevOps landscape.
+ - Culture and collaboration, and how teams really work across development, operations, and reliability.
+ - Cloud, platform, and infrastructure stories from design to production.
+ - Reliability, resilience, and security challenges in complex systems.
+ - Interactive and experimental formats, including gamified activities
+ 
+ Alongside technical sessions, you can expect fantasy-themed elements such as decorations, simple costumes, themed trinkets, and interactive activities that keep the day engaging without losing technical depth.
+ 
+ ---
+ 
+ #### Am I the right speaker for this?
+ 
+ If you work in DevOps or anywhere around it, then the answer is yes.
+ 
+ We welcome speakers from diverse backgrounds and all walks of life, not just traditional DevOps roles, but anyone working on operations, cloud, reliability, or security in a broader sense. We accept a wide range of session types, as long as they align with the core themes of the conference.
+ 
+ Questions? Want to bring DevOps Not Dead to your city? Please ping **mark@devopsnotdead.com**.
+ 
+ Thank you for presenting with us!

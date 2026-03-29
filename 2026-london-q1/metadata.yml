@@ -1,11 +1,11 @@
 # TODO - change these
 
 # start time includes timezone at the end relative to UTC
-start_time: "2026-03-13T10:00:00+00:00"
+start_time: "2026-03-13T09:00:00+00:00"
 # before - no schedule
 # active - schedule
 # after  - hide ticket sales
-event_state: before
+event_state: after
 date_string: "March 13, 2026"
 location_string: "London, UK"
 # get this from the event url
@@ -14,7 +14,7 @@ cfp_url: https://www.papercall.io/devopsnotdead-2026-london-q1
 
 # the number of tracks needs to be the same per day
 # the tracks will be taken in the order they appear in the CSV file
-days: 2
+days: 1
 attendees: 150
 speakers: 30+
 
@@ -33,20 +33,41 @@ breaks:
   duration: 60
   comment: Main lobby
   talks_before: 3
-- title: Wrap up
+- title: Networking and sponsor crawl
   duration: 30
   comment: Main lobby
-  talks_before: 5
+  talks_before: 3
 
 sponsors:
   - logo: harness.png
     url: https://www.harness.io/
+  - logo: gdg_london.png
+    url: https://gdg.community.dev/gdg-london/
+  - logo: IacConf.png
+    url: https://www.iacconf.com/
+  - logo: DevIT_black.png
+    url: https://devitjobs.uk
+  - logo: ksug.ai.png
+    url: https://ksug.ai/?ref=sre
   - logo: hockeystick.png
     url: https://www.hockeystick.show
 
 # these get displayed at the top
 hero_pictures:
 - ../photos/london-2022-0.jpg
+
+# brand identity
+brand_name: "DevOpsNotDead"
+brand_domain: "devopsnotdead.com"
+brand_description: "Conference on DevOps, Cloud, rock & roll!"
+brand_tagline: "DevOps, Cloud, rock & roll!"
+brand_og_pitch: "Probably the coolest DevOps conference in"
+brand_color: "#592f1a"
+brand_twitter: "@devopsnotdead_com"
+brand_ga_id: "G-CQ2KV6LK8G"
+brand_gads_id: "AW-17496979257"
+brand_twt_pixel: "ofo1h"
+logo_image: "/assets/images/DnD_logo.png"
 
 # probably don't need changing
 base_path: "https://www.sreday.com/"
