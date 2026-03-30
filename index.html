@@ -575,7 +575,7 @@ function toggleNote(id) {
 
       
 
-      <div class="col-6 col-lg-3 mb-4">
+      <div class="col-6 col-lg-3 mb-4 testimonial-extra">
         <div class="card rounded">
           <img src="./assets/images/profiles/Zlorrath DnD.png" class="card-img-top rounded-0" alt="">
           <div class="card-body">
@@ -603,8 +603,20 @@ function toggleNote(id) {
 
       
     </div>
+    
+    <div class="text-center mt-3">
+      <a href="javascript:void(0);" id="show-more-testimonials" class="btn btn-outline-secondary" onclick="showMoreTestimonials()">Show 1 more</a>
+    </div>
+    
   </div>
 </section>
+<style>.testimonial-extra { display: none; }</style>
+<script>
+function showMoreTestimonials() {
+  document.querySelectorAll('.testimonial-extra').forEach(function(el) { el.style.display = ''; });
+  document.getElementById('show-more-testimonials').style.display = 'none';
+}
+</script>
 
 
 
