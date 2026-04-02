@@ -22,6 +22,7 @@ events:
     location: Canary Wharf, London, UK
     photo_url: ./assets/images/events/dnd-2026-london-q1.png
     url: ./2026-london-q1/
+    size: medium
 
 events_past:
 
@@ -29,6 +30,7 @@ events_past:
     location: Harness, New York, US
     photo_url: ./assets/images/events/dnd-2026-nyc-q1.png
     url: ./2026-nyc-q1/
+    size: small
 
 meetups: []
 
