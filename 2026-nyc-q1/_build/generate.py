@@ -165,7 +165,7 @@ print(DIVIDER)
 pages = ["index.html"]
 print(f"Generating main pages: {pages}")
 for page in pages:
-    with open(BASE_FOLDER + "/" + page, "w") as f:
+    with open(BASE_FOLDER + "/" + page, "w", encoding="utf-8") as f:
         print("Writing out", page)
         template = env.get_template(page)
         f.write(template.render(page=page, **context))
@@ -175,7 +175,7 @@ for page in pages:
 # template each talk page for the event
 for talk in talks_raw:
     print("Generating talk subpage %s" % (talk.get("short_url")))
-    with open(BASE_FOLDER + "/" + talk.get("short_url").replace(".html","")  + ".html", "w") as f:
+    with open(BASE_FOLDER + "/" + talk.get("short_url").replace(".html","")  + ".html", "w", encoding="utf-8") as f:
         template = env.get_template("talk.html")
         f.write(template.render(talk=talk, **context))
         SITEMAP_URLS.append((talk.get("short_url").replace(".html",""), 0.75))
@@ -184,6 +184,6 @@ for talk in talks_raw:
 print(DIVIDER)
 print("Generating sitemap.xml with %d items" % len(SITEMAP_URLS))
 now = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=datetime.timezone.utc).isoformat()
-with open(BASE_FOLDER + "/sitemap.xml", "w") as f:
+with open(BASE_FOLDER + "/sitemap.xml", "w", encoding="utf-8") as f:
     template = env.get_template("sitemap.xml")
     f.write(template.render(urls=SITEMAP_URLS, now=now, **context))

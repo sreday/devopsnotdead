@@ -23,6 +23,7 @@ events:
     photo_url: ./assets/images/events/dnd-2026-london-q1.png
     url: ./2026-london-q1/
     size: medium
+    youtube_playlist:
 
 events_past:
 
@@ -31,6 +32,7 @@ events_past:
     photo_url: ./assets/images/events/dnd-2026-nyc-q1.png
     url: ./2026-nyc-q1/
     size: small
+    youtube_playlist:
 
 meetups: []
 
