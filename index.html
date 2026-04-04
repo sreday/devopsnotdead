@@ -690,31 +690,17 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="sponsor-carousel-wrap" style="background:#fff;border-radius:8px;padding:2rem 0;margin:1.95rem auto 1.5rem;overflow:hidden;width:60%;">
           <div class="sponsor-carousel-track">
             
-            <div class="sponsor-carousel-item"><img src="./sponsors/arf.png" alt="arf"></div>
-            
             <div class="sponsor-carousel-item"><img src="./sponsors/cast_ai.png" alt="cast_ai"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/cribl.png" alt="cribl"></div>
             
-            <div class="sponsor-carousel-item"><img src="./sponsors/DevIT.png" alt="DevIT"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/DevIT_black.png" alt="DevIT_black"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/gdg_london.png" alt="gdg_london"></div>
-            
             <div class="sponsor-carousel-item"><img src="./sponsors/harness.png" alt="harness"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/hockeystick.png" alt="hockeystick"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/IacConf.png" alt="IacConf"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/imply.png" alt="imply"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/kerno.png" alt="kerno"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/komodor.png" alt="komodor"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/ksug.ai.png" alt="ksug"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/mezmo.png" alt="mezmo"></div>
             
@@ -725,31 +711,17 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="sponsor-carousel-item"><img src="./sponsors/shipfox.png" alt="shipfox"></div>
             
             
-            <div class="sponsor-carousel-item"><img src="./sponsors/arf.png" alt="arf"></div>
-            
             <div class="sponsor-carousel-item"><img src="./sponsors/cast_ai.png" alt="cast_ai"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/cribl.png" alt="cribl"></div>
             
-            <div class="sponsor-carousel-item"><img src="./sponsors/DevIT.png" alt="DevIT"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/DevIT_black.png" alt="DevIT_black"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/gdg_london.png" alt="gdg_london"></div>
-            
             <div class="sponsor-carousel-item"><img src="./sponsors/harness.png" alt="harness"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/hockeystick.png" alt="hockeystick"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/IacConf.png" alt="IacConf"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/imply.png" alt="imply"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/kerno.png" alt="kerno"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/komodor.png" alt="komodor"></div>
-            
-            <div class="sponsor-carousel-item"><img src="./sponsors/ksug.ai.png" alt="ksug"></div>
             
             <div class="sponsor-carousel-item"><img src="./sponsors/mezmo.png" alt="mezmo"></div>
             
@@ -813,6 +785,71 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="row gx-md-5">
       <div class="col-12 mb-3">
         <h3 class="section-heading text-center mb-3">Partner</h3>
+
+        
+        <div class="partner-carousel-wrap" style="background:#fff;border-radius:8px;padding:2rem 0;margin:1.95rem auto 1.5rem;overflow:hidden;width:60%;">
+          <div class="partner-carousel-track">
+            
+            <div class="partner-carousel-item"><img src="./sponsors/arf.png" alt="arf"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/DevIT.png" alt="DevIT"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/DevIT_black.png" alt="DevIT_black"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/gdg_london.png" alt="gdg_london"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/hockeystick.png" alt="hockeystick"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/IacConf.png" alt="IacConf"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/ksug.ai.png" alt="ksug"></div>
+            
+            
+            <div class="partner-carousel-item"><img src="./sponsors/arf.png" alt="arf"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/DevIT.png" alt="DevIT"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/DevIT_black.png" alt="DevIT_black"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/gdg_london.png" alt="gdg_london"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/hockeystick.png" alt="hockeystick"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/IacConf.png" alt="IacConf"></div>
+            
+            <div class="partner-carousel-item"><img src="./sponsors/ksug.ai.png" alt="ksug"></div>
+            
+          </div>
+        </div>
+        <style>
+        .partner-carousel-wrap { position: relative; }
+        .partner-carousel-track {
+          display: flex; align-items: center; gap: 3rem;
+          width: max-content; animation: partner-scroll 40s linear infinite;
+        }
+        .partner-carousel-wrap:hover .partner-carousel-track { animation-play-state: paused; }
+        .partner-carousel-item img {
+          height: 120px; width: auto; max-width: 288px;
+          object-fit: contain; filter: grayscale(20%); transition: filter 0.2s ease;
+        }
+        .partner-carousel-item img:hover { filter: grayscale(0%); }
+        @keyframes partner-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        </style>
+        <script>
+        (function() {
+          var track = document.querySelector('.partner-carousel-track');
+          if (track) {
+            var SPEED = 25;
+            var totalWidth = track.scrollWidth / 2;
+            track.style.animationDuration = (totalWidth / SPEED) + 's';
+          }
+        })();
+        </script>
+        
+
         <div class="section-intro text-center single-col-max mx-auto">
           Interested in bringing DevOpsNotDead to your city?
         </div>
