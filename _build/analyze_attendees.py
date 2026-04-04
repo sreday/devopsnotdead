@@ -1,5 +1,5 @@
 """
-analyze_attendees.py  —  Attendee Analysis Playbook
+analyze_attendees.py  - Attendee Analysis Playbook
 =====================================================
 This is the attendee analysis playbook for the conference series.
 It reads Luma attendee CSV exports and produces audience profile stats
@@ -36,7 +36,7 @@ Role labels are chosen to be accurate and professionally neutral:
       Distinct from "Researcher", who is employed to do research.
 
   "Researcher"
-      Professional researchers — employed at a university, lab, or
+      Professional researchers -employed at a university, lab, or
       company R&D unit. Distinct from students and from engineers
       whose job happens to involve some research component.
 
@@ -54,7 +54,7 @@ from pathlib import Path
 # PER-CONFERENCE CONTENT
 # Update TLDR when running for a new brand or after a significant
 # shift in audience composition.
-# "What they are working on" pills are NOT here — they are generated
+# "What they are working on" pills are NOT here -they are generated
 # dynamically at build time from talks.csv by generate.py.
 #
 # TLDR writing rules:
@@ -65,7 +65,7 @@ from pathlib import Path
 
 TLDR = (
     "A hands-on crowd of DevOps engineers, SREs, platform engineers, and technical leaders "
-    "from startups and enterprises — people who are actively building and operating "
+    "from startups and enterprises -people who are actively building and operating "
     "production systems. Senior practitioners who debate tooling choices, "
     "care deeply about reliability and developer experience, and are figuring out "
     "how to make platform engineering work at scale."
@@ -74,7 +74,7 @@ TLDR = (
 # ── "What they are working on" topics ─────────────────────────────────────
 # Scored from talk titles + abstracts across all discovered talks.csv files.
 # Top WORKING_ON_HIGHLIGHT topics are highlighted on the page; the rest are
-# shown as plain pills. Review the output each season — keyword rules are a
+# shown as plain pills. Review the output each season -keyword rules are a
 # good starting point but can't reason about genuinely novel topics. Add new
 # keywords to WORKING_ON_KEYWORDS when the landscape shifts.
 WORKING_ON_HIGHLIGHT = 3   # top 3 highlighted, rest plain
@@ -98,7 +98,7 @@ WORKING_ON_KEYWORDS = {
 # ── Role display merge ─────────────────────────────────────────────────────
 # The classifier produces ~12 granular role buckets (useful for debugging and
 # catching edge cases). For the sponsorship page we cap at 6 display categories
-# — marketing readers don't need that level of detail.
+# -marketing readers don't need that level of detail.
 # Map granular label → display label. Anything not listed passes through as-is.
 ROLE_DISPLAY_MERGE = {
     "Software Engineer":          "Software / Platform / DevOps",
@@ -160,9 +160,10 @@ ROLE_RULES = [
     ("Independent / Job Seeker", lambda t: any(x in t for x in [
         'student', 'phd', 'mba', 'masters', "master's", 'ms cs',
         'grad assistant', 'graduate research', 'open to work',
-        'job search', 'alumni engagement', 'data science ra',
-        'freelance artist', 'unemployed',
-    ]) or t.strip() in ['none']),
+        'job search', 'job seeker', 'alumni engagement', 'data science ra',
+        'freelance artist', 'unemployed', 'looking for a new role',
+        'trainee', 'learner',
+    ]) or t.strip() in ['none', 'n/a', 'na']),
 
     # ── Researcher ─────────────────────────────────────────────
     # Professional researchers at universities, labs, or R&D units.
@@ -196,6 +197,8 @@ ROLE_RULES = [
     ("Engineering Lead / Manager", lambda t: any(x in t for x in [
         'engineering manager', 'platform engineering manager',
         'tech lead', 'team lead', 'sdm', 'engineering lead',
+        'practice lead', 'delivery lead', 'infrastructure practice lead',
+        'principal advisor',
     ])),
 
     # ── DevOps / SRE / Platform ────────────────────────────────
@@ -222,6 +225,8 @@ ROLE_RULES = [
         'staff developer', 'field cto', 'fractional cto',
         'it project', 'it consultant', 'software eng',
         ' engineer', ' developer', ' architect', 'swe', 'fde',
+        'tech support', 'storage', 'creative technologist',
+        'open source advocate', 'tech author', 'application security',
     ]) and not any(x in t for x in [
         'product manager', 'business', 'market', 'psycholog',
         'accountant', 'coordinator', 'operations', 'lecturer',
@@ -253,10 +258,11 @@ ROLE_RULES = [
         'operations', 'coordinator', 'admin', 'specialist',
         'project manager', 'project coordinator', 'psycholog',
         'accountant', 'media', 'redaktor', 'marketing', 'growth',
-        'education', 'deputy', 'organizer', 'promotion', 'recruiter',
+        'education', 'deputy', 'organizer', 'organiser', 'promotion', 'recruiter',
         'business transformation', 'digital transformation',
         'tech marketing', 'ai software evangelist', 'prod support',
-        'site manager',
+        'site manager', 'sales development', 'sales executive',
+        'business development', 'talent acquisition',
     ]) or t.strip() in ['team', 'manager', 'fde', 'se', 'ai', 'engineer']),
 ]
 
@@ -411,7 +417,7 @@ def pct(n, total):
 
 def read_csv(path):
     rows = []
-    with open(path, encoding='utf-8-sig') as f:
+    with open(path, encoding='utf-8-sig', errors='replace') as f:
         reader = csv.DictReader(line.replace('\0', '') for line in f)
         for row in reader:
             rows.append(row)
@@ -426,11 +432,11 @@ def top_n(counts, total, exclude_other=True):
 
 
 def print_section(title, items):
-    print(f"\n{'═'*52}")
+    print(f"\n{'='*52}")
     print(title)
-    print('═'*52)
+    print('='*52)
     for item in items:
-        bar = "█" * (item["pct"] // 2)
+        bar = "#" * (item["pct"] // 2)
         print(f"  {item['label']:<35} {item['pct']:>3}%  {bar}")
 
 
@@ -538,7 +544,7 @@ def patch_sponsorship_template(repo_root, tldr, role_stats, size_stats, senior_s
     template_path = repo_root / '_event_template' / '_templates' / 'sponsorship.html'
 
     if not template_path.exists():
-        print(f"\n  ⚠  Template not found at {template_path} - skipping patch.")
+        print(f"\n  WARNING: Template not found at {template_path} - skipping patch.")
         return
 
     original = template_path.read_text(encoding='utf-8')
@@ -550,7 +556,7 @@ def patch_sponsorship_template(repo_root, tldr, role_stats, size_stats, senior_s
     end_idx   = original.find(end_sentinel)
 
     if start_idx == -1 or end_idx == -1:
-        print("\n  ⚠  Sentinel comments not found in template - skipping patch.")
+        print("\n  WARNING: Sentinel comments not found in template - skipping patch.")
         print("     Expected markers:")
         print(f"       '{start_sentinel}...'")
         print(f"       '{end_sentinel}...'")
@@ -562,7 +568,7 @@ def patch_sponsorship_template(repo_root, tldr, role_stats, size_stats, senior_s
 
     patched = original[:start_idx] + new_block + original[end_idx:]
     template_path.write_text(patched, encoding='utf-8')
-    print(f"\n  ✓  Sponsorship template patched: {template_path}")
+    print(f"\n  OK  Sponsorship template patched: {template_path}")
 
 
 # ══════════════════════════════════════════════════════════════
@@ -581,7 +587,7 @@ def main():
         print(f"  Loaded {len(loaded)} rows from {Path(p).name}")
         rows.extend(loaded)
 
-    # De-duplicate by name — the same person may attend multiple events.
+    # De-duplicate by name -the same person may attend multiple events.
     # Keep the first occurrence (earliest event loaded).
     seen_names = set()
     deduped = []
@@ -639,7 +645,7 @@ def main():
         if classify_role(r.get('Job Title', '')) == "Other"
     ]
     if unclassified:
-        print(f"\n  Unclassified job titles ({len(unclassified)}) — add rules for these:")
+        print(f"\n  Unclassified job titles ({len(unclassified)}) -add rules for these:")
         for t in sorted(set(unclassified)):
             print(f"    {t}")
 
@@ -654,7 +660,7 @@ def main():
     if talks_files:
         print(f"\n  Found {len(talks_files)} talks.csv file(s) for topic extraction.")
     else:
-        print("\n  No talks.csv files found — skipping topic extraction.")
+        print("\n  No talks.csv files found -skipping topic extraction.")
         print(f"  Expected location: {repo_root}/20*/_db/talks.csv")
 
     stats = {
@@ -671,19 +677,19 @@ def main():
     print_section("COMPANY SIZE",    size_stats)
     print_section("SENIORITY",       senior_stats)
 
-    print(f"\n{'═'*52}")
+    print(f"\n{'='*52}")
     print("TLDR")
-    print('═'*52)
+    print('='*52)
     print(f"  {TLDR}")
 
     if topic_pills:
-        print(f"\n{'═'*52}")
+        print(f"\n{'='*52}")
         print("WHAT THEY ARE WORKING ON")
-        print('═'*52)
-        print("  Review these — keyword rules are a starting point, not ground truth.")
+        print('='*52)
+        print("  Review these -keyword rules are a starting point, not ground truth.")
         print("  Add missing emerging topics to WORKING_ON_KEYWORDS if needed.\n")
         for p in topic_pills:
-            tag = "★ " if p['highlight'] else "  "
+            tag = "* " if p['highlight'] else "  "
             print(f"  {tag}{p['label']:<38} {p['count']} talks")
 
     # ── Write JSON ────────────────────────────────────────────
