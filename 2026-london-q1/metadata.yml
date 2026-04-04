@@ -8,6 +8,7 @@ start_time: "2026-03-13T09:00:00+00:00"
 event_state: after
 date_string: "March 13, 2026"
 location_string: "London, UK"
+city_name: "London"
 # get this from the event url
 luma_evt: evt-zbxt1dAzUOUvPJY
 cfp_url: https://www.papercall.io/devopsnotdead-2026-london-q1

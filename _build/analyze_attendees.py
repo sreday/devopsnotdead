@@ -10,9 +10,17 @@ Drop in CSV files from any Luma event export and run:
 
     python3 _build/analyze_attendees.py path/to/event1.csv path/to/event2.csv ...
 
-Output: human-readable stats printed to stdout + attendee_stats.json written
-next to this script. Copy the numbers into the hardcoded static section of
-sponsorship.html.
+Output:
+  - Human-readable stats printed to stdout
+  - attendee_stats.json written next to this script
+  - _event_template/_templates/sponsorship.html patched in place
+
+The sponsorship template is patched automatically between the two sentinel
+comments below. Do not remove or rename them:
+
+    {# ── ATTENDEE PROFILE (static - update by running _build/analyze_attendees.py) ── #}
+    ...
+    {# ── SPEAKER COMPANIES (dynamic ...
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CATEGORY DESIGN NOTES
@@ -56,9 +64,11 @@ from pathlib import Path
 # ══════════════════════════════════════════════════════════════
 
 TLDR = (
-    "A hands-on crowd of engineers and technical leaders from startups and enterprises, "
-    "people who are actively shipping AI products. "
-    "Senior practitioners who choose their own tools and shape how their teams work."
+    "A hands-on crowd of DevOps engineers, SREs, platform engineers, and technical leaders "
+    "from startups and enterprises — people who are actively building and operating "
+    "production systems. Senior practitioners who debate tooling choices, "
+    "care deeply about reliability and developer experience, and are figuring out "
+    "how to make platform engineering work at scale."
 )
 
 # ── "What they are working on" topics ─────────────────────────────────────
@@ -71,20 +81,18 @@ WORKING_ON_HIGHLIGHT = 3   # top 3 highlighted, rest plain
 WORKING_ON_MAX       = 10  # cap output at 10 pills
 
 WORKING_ON_KEYWORDS = {
-    "Agents & Automation":          ['agent', 'agentic', 'autonomous agent', 'orchestrat', 'multi-agent', 'autonom'],
-    "Applied / Product AI":         ['product', 'ux', 'user interface', 'human-in-the-loop', 'coaching', 'application'],
-    "Production & Reliability":     ['production', 'reliability', 'failure', 'incident', 'on-call', 'slo', 'sla', 'resilience'],
-    "LLM Infrastructure & Cost":   ['infrastructure', 'gpu', 'cluster', 'cost', 'capacity', 'compute', 'latency', 'throughput'],
-    "RAG & Retrieval":              ['rag', 'retrieval', 'knowledge graph', 'graphrag', 'vector search', 'retriev'],
-    "LLM Evaluation & Testing":    ['evaluat', 'benchmark', 'testing', 'evals', 'verification', 'hallucin'],
-    "Open Source & Edge":           ['open.source', 'open source', 'edge', 'on.prem', 'private.*llm', 'local model', 'self-host'],
-    "Prompt & Context Engineering": ['prompt', 'context engineering', 'context window', 'few-shot', 'system prompt'],
-    "Multimodal & Specialized AI":  ['multimodal', 'vision', 'vlm', 'voice', 'neural', 'wearable', 'medical', 'healthcare', 'radiolog'],
-    "AI Ethics & Governance":       ['ethics', 'ai act', 'regulation', 'governance', 'bias', 'responsible', 'safety'],
-    "Fine-tuning & Training":       ['fine-tun', 'finetuning', 'grpo', 'rlhf', 'training', 'distillat', 'reinforcement'],
-    "AI Security":                  ['security', 'secure', 'vulnerab', 'attack', 'prompt injection', 'malicious'],
-    "MLOps & Observability":        ['mlops', 'observabil', 'monitor', 'tracing', 'opentelemetry', 'telemetry', 'sampling'],
-    "Coding Agents & DevEx":        ['coding agent', 'code generat', 'developer product', 'developer experienc', 'vibe cod'],
+    "CI/CD & Delivery":             ['ci/cd', 'continuous', 'pipeline', 'deploy', 'delivery', 'gitops', 'argocd'],
+    "Kubernetes & Containers":      ['kubernetes', 'k8s', 'container', 'docker', 'helm', 'operator'],
+    "Platform Engineering":         ['platform engineer', 'internal developer', 'developer portal', 'backstage', 'idp'],
+    "Observability & Monitoring":   ['observabil', 'monitor', 'tracing', 'opentelemetry', 'telemetry', 'logging', 'grafana'],
+    "Infrastructure as Code":       ['terraform', 'pulumi', 'ansible', 'infrastructure as code', 'iac', 'crossplane'],
+    "Cloud & Infrastructure":       ['cloud', 'aws', 'azure', 'gcp', 'multi-cloud', 'hybrid', 'serverless'],
+    "Reliability & Resilience":     ['reliability', 'sre', 'incident', 'on-call', 'slo', 'sla', 'chaos', 'resilience'],
+    "Security & DevSecOps":         ['security', 'devsecops', 'supply chain', 'vulnerab', 'shift left', 'sbom'],
+    "AI for DevOps":                ['ai', 'aiops', 'copilot', 'llm', 'agent', 'automation', 'ml'],
+    "Developer Experience":         ['developer experience', 'devex', 'dx', 'productivity', 'developer product'],
+    "FinOps & Cost":                ['finops', 'cost', 'cloud spend', 'optimize', 'efficiency'],
+    "Culture & Transformation":     ['culture', 'transformation', 'devops dead', 'team', 'collaboration'],
 }
 
 # ── Role display merge ─────────────────────────────────────────────────────
@@ -427,6 +435,137 @@ def print_section(title, items):
 
 
 # ══════════════════════════════════════════════════════════════
+# SPONSORSHIP TEMPLATE PATCHER
+# ══════════════════════════════════════════════════════════════
+
+def render_attendee_profile_block(tldr, role_stats, size_stats, senior_stats, topic_pills):
+    """Render the static attendee profile HTML block."""
+
+    def bar_item(label, p):
+        label_html = label.replace('<', '&lt;')
+        return (
+            f'              <li class="sp-stats-bar-item">\n'
+            f'                <div class="sp-stats-bar-header">'
+            f'<span class="sp-stats-bar-name">{label_html}</span>'
+            f'<span class="sp-stats-bar-count">{p}%</span></div>\n'
+            f'                <div class="sp-stats-bar-track">'
+            f'<div class="sp-stats-bar-fill" style="width:{p}%"></div></div>\n'
+            f'              </li>'
+        )
+
+    def tag(label, hot):
+        cls = 'sp-stats-tag hot' if hot else 'sp-stats-tag'
+        label_html = label.replace('&', '&amp;')
+        return f'              <span class="{cls}">{label_html}</span>'
+
+    role_bars   = '\n'.join(bar_item(r['label'], r['pct']) for r in role_stats)
+    size_bars   = '\n'.join(bar_item(r['label'], r['pct']) for r in size_stats)
+    senior_bars = '\n'.join(bar_item(r['label'], r['pct']) for r in senior_stats)
+    topic_tags  = '\n'.join(tag(p['label'], p['highlight']) for p in topic_pills)
+
+    return (
+        '{# ── ATTENDEE PROFILE (static - update by running _build/analyze_attendees.py) ── #}\n'
+        '        <div class="sp-stats-s-title">Attendee profile</div>\n'
+        '        <div class="sp-stats-s-sub">Based on past attendee information across sampled events</div>\n'
+        '\n'
+        '        <div class="sp-stats-tldr">\n'
+        f'          <strong>TLDR:</strong> {tldr}\n'
+        '        </div>\n'
+        '\n'
+        '        <div class="sp-stats-grid-2">\n'
+        '\n'
+        '          <div class="sp-stats-card">\n'
+        '            <div class="sp-stats-card-title">Role breakdown</div>\n'
+        '            <ul class="sp-stats-bar-list">\n'
+        f'{role_bars}\n'
+        '            </ul>\n'
+        '          </div>\n'
+        '\n'
+        '          <div class="sp-stats-card">\n'
+        '            <div class="sp-stats-card-title">Company size</div>\n'
+        '            <ul class="sp-stats-bar-list">\n'
+        f'{size_bars}\n'
+        '            </ul>\n'
+        '          </div>\n'
+        '\n'
+        '          <div class="sp-stats-card">\n'
+        '            <div class="sp-stats-card-title">What they are working on</div>\n'
+        '            <div class="sp-stats-tag-cloud">\n'
+        f'{topic_tags}\n'
+        '            </div>\n'
+        '          </div>\n'
+        '\n'
+        '          <div class="sp-stats-card">\n'
+        '            <div class="sp-stats-card-title">Attendee seniority</div>\n'
+        '            <ul class="sp-stats-bar-list">\n'
+        f'{senior_bars}\n'
+        '            </ul>\n'
+        '          </div>\n'
+        '\n'
+        '        </div>\n'
+        '\n'
+        '        <div class="sp-stats-card" style="margin-bottom:32px">\n'
+        '          <div class="sp-stats-card-title">Top attendee companies</div>\n'
+        '          <div class="sp-stats-pill-grid" style="margin-bottom:0">\n'
+        '            <span class="sp-stats-pill">AWS</span>\n'
+        '            <span class="sp-stats-pill">Google</span>\n'
+        '            <span class="sp-stats-pill">Roche</span>\n'
+        '            <span class="sp-stats-pill">Adobe</span>\n'
+        '            <span class="sp-stats-pill">Thoughtworks</span>\n'
+        '            <span class="sp-stats-pill">Snowflake</span>\n'
+        '            <span class="sp-stats-pill">Monday.com</span>\n'
+        '            <span class="sp-stats-pill">N26</span>\n'
+        '            <span class="sp-stats-pill">Harness</span>\n'
+        '            <span class="sp-stats-pill">OpenX</span>\n'
+        '          </div>\n'
+        '        </div>\n'
+        '\n'
+        '        <hr class="sp-stats-sep">\n'
+        '\n'
+        '        '
+    )
+
+
+def patch_sponsorship_template(repo_root, tldr, role_stats, size_stats, senior_stats, topic_pills):
+    """
+    Patch the static attendee profile block in
+    _event_template/_templates/sponsorship.html in place.
+
+    Rewrites content between the two sentinel comments:
+      START: {# ── ATTENDEE PROFILE (static ...
+      END:   {# ── SPEAKER COMPANIES (dynamic ...
+    """
+    template_path = repo_root / '_event_template' / '_templates' / 'sponsorship.html'
+
+    if not template_path.exists():
+        print(f"\n  ⚠  Template not found at {template_path} - skipping patch.")
+        return
+
+    original = template_path.read_text(encoding='utf-8')
+
+    start_sentinel = '{# ── ATTENDEE PROFILE'
+    end_sentinel   = '{# ── SPEAKER COMPANIES'
+
+    start_idx = original.find(start_sentinel)
+    end_idx   = original.find(end_sentinel)
+
+    if start_idx == -1 or end_idx == -1:
+        print("\n  ⚠  Sentinel comments not found in template - skipping patch.")
+        print("     Expected markers:")
+        print(f"       '{start_sentinel}...'")
+        print(f"       '{end_sentinel}...'")
+        return
+
+    new_block = render_attendee_profile_block(
+        tldr, role_stats, size_stats, senior_stats, topic_pills
+    )
+
+    patched = original[:start_idx] + new_block + original[end_idx:]
+    template_path.write_text(patched, encoding='utf-8')
+    print(f"\n  ✓  Sponsorship template patched: {template_path}")
+
+
+# ══════════════════════════════════════════════════════════════
 # MAIN
 # ══════════════════════════════════════════════════════════════
 
@@ -553,9 +692,12 @@ def main():
         json.dump(stats, f, indent=2)
 
     print(f"\n  Stats written to {out_path}")
-    print("  Copy numbers into the static section of sponsorship.html.")
-    print("  Update TLDR at the top of this file when audience composition")
-    print("  changes significantly between seasons.\n")
+
+    # ── Patch sponsorship template in place ───────────────────
+    patch_sponsorship_template(
+        repo_root, TLDR, role_stats, size_stats, senior_stats, topic_pills
+    )
+    print("  Done. Commit and push to deploy.\n")
 
 
 if __name__ == "__main__":
