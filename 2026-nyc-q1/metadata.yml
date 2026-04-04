@@ -7,11 +7,13 @@ event_state: after
 start_time: "2026-02-27T09:30:00-05:00"
 date_string: "February 27, 2026"
 location_string: "Harness, New York, US"
+city_name: "New York"
 
 cfp_url: https://www.papercall.io/devopsnotdead-2026-nyc-q1
 twitter_url: https://twitter.com/evopsnotdead_com
 linkedin_url: https://www.linkedin.com/company/evopsnotdead/
 youtube_url: https://www.youtube.com/@evopsnotdead
+youtube_playlist:
 luma_evt: evt-7pxs7Mtyado8EsE
 mailto: "mailto:mark@devopsnotdead.com"
 
