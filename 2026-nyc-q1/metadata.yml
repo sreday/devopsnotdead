@@ -16,6 +16,7 @@ youtube_url: https://www.youtube.com/@evopsnotdead
 youtube_playlist:
 luma_evt: evt-7pxs7Mtyado8EsE
 mailto: "mailto:mark@devopsnotdead.com"
+calendly_sponsor_url: "https://calendly.com/sreday/30min"
 
 # the number of tracks needs to be the same per day
 # the tracks will be taken in the order they appear in the csv file and spread equally on both days
