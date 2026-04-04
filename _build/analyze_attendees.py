@@ -64,12 +64,12 @@ from pathlib import Path
 # ══════════════════════════════════════════════════════════════
 
 TLDR = (
-    "A hands-on crowd of DevOps engineers, SREs, platform engineers, and technical leaders "
-    "from startups and enterprises -people who are actively building and operating "
-    "production systems. Senior practitioners who debate tooling choices, "
-    "care deeply about reliability and developer experience, and are figuring out "
-    "how to make platform engineering work at scale."
+    "A hands-on crowd of DevOps engineers, SREs, and platform engineers "
+    "from startups and enterprises \u2014 actively building and operating production systems. "
+    "Senior practitioners who care about reliability and developer experience, "
+    "figuring out how to make platform engineering work at scale."
 )
+assert len(TLDR) <= 300, f"TLDR is {len(TLDR)} chars \u2014 must be \u2264 300"
 
 # ── "What they are working on" topics ─────────────────────────────────────
 # Scored from talk titles + abstracts across all discovered talks.csv files.
