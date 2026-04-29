@@ -18,13 +18,6 @@ counts:
 
 events:
 
-  - name: DevOps Not Dead London 2026 Q1
-    location: Canary Wharf, London, UK
-    photo_url: ./assets/images/events/dnd-2026-london-q1.png
-    url: ./2026-london-q1/
-    size: large
-    youtube_playlist:
-
 events_past:
 
   - name: DevOps Not Dead NYC 2026 Q1
@@ -32,6 +25,13 @@ events_past:
     photo_url: ./assets/images/events/dnd-2026-nyc-q1.png
     url: ./2026-nyc-q1/
     size: small
+    youtube_playlist:
+
+  - name: DevOps Not Dead London 2026 Q1
+    location: Canary Wharf, London, UK
+    photo_url: ./assets/images/events/dnd-2026-london-q1.png
+    url: ./2026-london-q1/
+    size: large
     youtube_playlist:
 
 meetups: []
