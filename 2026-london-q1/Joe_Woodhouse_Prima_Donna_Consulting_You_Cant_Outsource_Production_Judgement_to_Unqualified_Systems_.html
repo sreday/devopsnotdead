@@ -95,6 +95,16 @@
 	#home {
 		scroll-margin-top: 70px;
 	}
+	.hero-cta a, .hero-cta a:hover { text-decoration: none; }
+	:root {
+		--brand: #592f1a;
+		--brand-light: color-mix(in srgb, #592f1a 55%, white);
+		--brand-lighter: color-mix(in srgb, #592f1a 35%, white);
+		--brand-lightest: color-mix(in srgb, #592f1a 12%, white);
+		--brand-pale: color-mix(in srgb, #592f1a 8%, white);
+		--brand-dark: color-mix(in srgb, #592f1a 100%, black 20%);
+		--brand-darker: color-mix(in srgb, #592f1a 100%, black 35%);
+	}
 </style>
 
 
@@ -107,7 +117,7 @@
                         <!-- <img class="logo-icon" src="assets/images/logo-white.svg" alt="logo"></a> -->
                     </div>
 
-					<div class="navbar-btn order-lg-2"><a class="btn btn-secondary" href="#tickets">Tickets</a></div>
+					
 
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -118,7 +128,7 @@
 						<ul class="nav navbar-nav">
 
 							<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="index.html#tickets">Tickets</a></li>
+							
 							<li class="nav-item"><a class="nav-link" href="index.html#schedule">Schedule</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html#speakers">Speakers</a></li>
 							<li class="nav-item"><a class="nav-link" href="index.html#venue">Venue</a></li>
@@ -202,12 +212,25 @@
 <!-- CONTENT -->
 
 
+<style>
+  .talk-content .desc p,
+  .talk-content .desc li {
+    text-align: justify;
+    line-height: 1.75;
+    color: #444;
+    font-size: 0.95rem;
+  }
+  .talk-content .desc {
+    padding-bottom: 0.25rem;
+  }
+</style>
+
 <section id="speakers-section" class="speakers-section section">
   <div class="container">
     <h1 class="section-heading text-center mb-3">You Can't Outsource Production Judgement to Unqualified Systems </h1>
     <div class="row">
 
-      <div class="col-6 col-lg-3 mb-4">
+      <div class="col-6 col-lg-3 mb-4" style="align-self:start;">
         <div class="card rounded-0">
           <img src="../speakers/Joe Woodhouse DnD.png" class="card-img-top rounded-0" alt="">
           <div class="card-body">
@@ -228,25 +251,26 @@
       </div><!--//col-->
 
       <div class="col-6 col-lg-9 mb-4">
-        <div class="card rounded-0">
+        <div class="card rounded-0 talk-content">
           <div class="card-body">
 
               <div class="desc p-2 p-lg-3">
-                <p><h4>The Problem</h4>
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p><strong>The Problem</strong></p>
 <p>You would never allow senior engineers to outsource core code decisions to unvetted offshore vendors without contracts or accountability.</p>
 <p>Yet many teams deploy AI generated code with zero guardrails:
 - No visibility into reasoning
 - No clarity in review
 - No cognitive engagement required from the engineer</p>
 <hr />
-<h4>Risks to the Individual Engineer</h4>
+<p><strong>Risks to the Individual Engineer</strong></p>
 <p>MIT research from 2025 shows that developers who rely on AI assistance exhibit persistent cognitive decline even after they stop using it. Recovery requires effort comparable to stroke rehabilitation.</p>
 <p>Key risks include:
 - Permanent debugging skill loss due to cognitive offloading
 - Architectural judgment decay, especially in junior engineers who never implement full features
 - Unrecoverable cognitive cost, where re skilling requires months of deliberate practice</p>
 <hr />
-<h4>Risks to the Engineering Department</h4>
+<p><strong>Risks to the Engineering Department</strong></p>
 <p>The disruption of the junior to senior pipeline is structural. If AI prevents junior engineers from building foundational skills, organizations face a hiring and capability crisis within three to five years.</p>
 <p>Department level risks include:
 - Collapse of the junior to senior pipeline, leaving no internal talent for architects, on call rotations, or technical leadership
@@ -257,8 +281,11 @@
                 <p></p>
               </div>
               <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
                 <p><p>Joe Woodhouse is a principal engineer and board-level adviser with over two decades of experience spanning low latency trading systems, large scale financial platforms, and technical leadership at the most senior levels. He has worked across global banks and financial institutions as a staff and principal engineer, combining deep hands on systems expertise with strategy, governance, and risk management. Joe is also a non executive director, bringing an engineer’s rigor to board decision making, particularly around technology, AI, and operational resilience. Based in London, he is known for bridging the gap between server room realities and boardroom accountability.</p></p>
               </div>
+
+              
 
           </div><!--//card-->
           <div class="card-footer text-muted">
