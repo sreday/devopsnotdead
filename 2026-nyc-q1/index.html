@@ -1860,6 +1860,27 @@ This talk explores how GitOps becomes the single source of truth, binding all en
   .modal-speaker .desc {
     padding-bottom: 0.25rem;
   }
+  .modal-speaker .btn-close {
+    background: var(--brand);
+    color: #fff;
+    opacity: 1;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
+    line-height: 1;
+    transition: background 0.2s ease;
+  }
+  .modal-speaker .btn-close:hover {
+    background: var(--brand-light);
+  }
+  .modal-speaker .talk-title-bar {
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+  }
 </style>
 
 
@@ -1891,6 +1912,7 @@ This talk explores how GitOps becomes the single source of truth, binding all en
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">The DevOps of Live Coding</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>For the past 10 years, I’ve created live-coded music and audio-reactive visual art under the name Messica Arson. This talk will cover my tools, my creative process for sound and visuals, and how I’ve built reliable artistic systems. </p>
@@ -1938,6 +1960,7 @@ This talk explores how GitOps becomes the single source of truth, binding all en
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Building AI SRE Agents for Autonomous Recovery</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Standard runbook automation often fails because it lacks context. When an incident strikes, the missing link is the "reasoning" that connects a spike in latency to a specific commit or infrastructure change. Join this session to see how AI SRE agents are bridging that gap using Agentic workflows. We will break down the stack required for autonomous resolution:</p>
@@ -1988,6 +2011,7 @@ This talk explores how GitOps becomes the single source of truth, binding all en
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">What Tolkien Taught Me About Being an SRE</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>J.R.R. Tolkien was a master of presenting real world situations in fantastical settings and making them both understandable and solvable. For many of us, Tolkien gave us the tools and the courage to conquer both the imagined fears and all-too-real obstacles standing in our way during childhood and adolescence.</p>
@@ -2037,6 +2061,7 @@ This talk explores how GitOps becomes the single source of truth, binding all en
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Leading the Future of DevOps with AI</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>This talk explores how AI is collapsing the traditional software development lifecycle and breaking long held linear DevOps assumptions, pushing meaningful work earlier through AI enabled prototyping and tighter collaboration across development, operations, and business teams. Drawing from real leadership lessons, it covers what actually reduced rework, what failed in practice, and how teams can adapt safely as these shifts accelerate.</p></p>
@@ -2082,6 +2107,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Who Watches the Watchmen - Running Production Ready AI Agents</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>As AI agents increasingly act autonomously in production systems, devops expands into evaluation, observability, and all of the above. This talk explores how to observe, improve, and debug AI agents in ways we did not have to think about for standard software services. I'll cover AI agent eval, monitoring, sandboxing best practices, and failure modes unique to agent-driven systems. Because when your software makes decisions on its own, someone still needs to be watching (it's agents all the way down).</p></p>
@@ -2126,6 +2152,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">DevOps is a Foreign Language (or Why There Are No Junior SREs)</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>A language is more than just the syntax and semantic rules of the words themselves. It also encompasses the shared culture of the speakers. With the proliferation of programming languages as well as the deeply held cultural beliefs of the community, it's easy to see that learning DevOps is like trying to learn a foreign language.</p>
@@ -2171,6 +2198,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Latest DORA research on AI-assisted Software Development</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>DORA is the largest and longest running research program of its kind, that seeks to understand the capabilities that drive software delivery and operations performance.  Our latest report is the 2025 State of AI-assisted Software Development, which reveals AI’s primary role is as an amplifier magnifying an organization’s existing strengths and weaknesses. The greatest returns on AI investment come not from the tools themselves, but from a strategic focus on the underlying organizational system. This year’s research also introduces the new DORA AI Capabilities Model, which identifies the key technical and cultural practices that are proven to amplify the positive impacts of AI on performance.</p></p>
@@ -2215,6 +2243,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Q the Savings: How We Built a $2M/Year FinOps Platform in 2 Weeks</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>We built a AI FinOps platform in 2 weeks with Kiro and AWS Bedrock that found $2M in annual AWS waste— without buying expensive tools. 13 automated scanners, gamified leaderboards, AI recommendations, and one-click cleanup. I'll show you exactly how we did it and how you can too.</p></p>
@@ -2259,6 +2288,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">AI Reliability Engineering (AIRE): Building Systems We Can Actually Trust</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>AI systems are rapidly evolving from assistive tools into autonomous decision-makers operating in production environments. While most organizations still evaluate AI success primarily through accuracy, latency, or model performance—often overlooking reliability, failure modes, and human trust.</p>
@@ -2304,6 +2334,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">One Repo to Rule Them All: GitOps Across the Realms of Dev, Staging, and Production</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>In every fantasy world, chaos erupts when realms drift apart - and modern platforms are no different. Development, staging, and production environments often diverge, creating configuration drift, broken releases, and late-night firefighting.</p>
@@ -2349,6 +2380,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Slaying Dragons & Goblins: Securing the Code in the DevSecOps Dungeon</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Dependency Dragons and Code Goblins are the hidden security threats buried in builds, originating from unvetted third-party dependencies and the insecure code developed. Dependency Dragons lurk inside third-party libraries , while Code Goblins appear from improper secure coding practices.</p></p>
@@ -2393,6 +2425,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Opening note: Was this a furry convention all along?</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Mark crossed the Atlantic from London to NYC through a full blown snowstorm just to don a Gandalf grade beard in person.</p>
@@ -2438,6 +2471,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Building Enterprise-ready CI/CD Pipelines using Agentic AI</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>This talk explores how agentic AI can be applied to build enterprise-ready CI/CD pipelines that are faster, safer, and easier to operate at scale. Chinmay will walk through how autonomous agents can make decisions across build, test, and deployment workflows, reducing manual intervention while improving reliability and governance. Attendees will gain a practical view of how AI-driven automation fits into modern CI/CD platforms and what it takes to move from experimental pipelines to production-grade delivery systems.</p></p>
