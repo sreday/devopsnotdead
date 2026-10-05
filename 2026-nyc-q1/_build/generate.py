@@ -3,6 +3,7 @@
 import datetime
 import re
 import csv
+import html
 import textwrap
 import string
 import yaml
@@ -34,6 +35,20 @@ def generate_talk_url(talk):
     url = re.sub('[\\W]+', '', url)
     return url[:100]
 
+def md_plain(text):
+    """Markdown -> plain text for places that show the abstract as text (schedule preview, short abstracts):
+    "[SREday](https://sreday.com/)" -> "SREday", **bold** / _italic_ / `code` / "## heading" / "- item" lose
+    their markup, raw <tags> go; the full description (talk page, modal) still renders the markdown"""
+    if not text:
+        return ''
+    html_out = markdown.markdown(str(text))
+    out = re.sub(r'</?(?:p|li|ul|ol|h[1-6]|br|div|blockquote|pre|hr|tr|table)\b[^>]*>', ' ', html_out)   # blocks -> a space
+    out = re.sub(r'<[^>]+>', '', out)                                                                    # inline tags go
+    out = html.unescape(out)
+    out = re.sub(r'\*+', '', out)                    # leftover * / ** (unclosed or mismatched emphasis)
+    out = re.sub(r'(?<!\w)_+|_+(?!\w)', '', out)     # leftover _ / __ at word edges; snake_case keeps its underscores
+    return re.sub(r'\s+', ' ', out).strip()
+
 def read_csv(path):
     """ Read the pre-process the CSV """
     items = []
@@ -43,8 +58,8 @@ def read_csv(path):
         for item in reader:
             item = dict(item)
             if "abstract" in item:
-                item["abstract_s"] = textwrap.shorten(item.get("abstract",""), 300, placeholder="...")
-                item["abstract_m"] = textwrap.shorten(item.get("abstract",""), 1000, placeholder="...")
+                item["abstract_s"] = textwrap.shorten(md_plain(item.get("abstract","")), 300, placeholder="...")
+                item["abstract_m"] = textwrap.shorten(md_plain(item.get("abstract","")), 1000, placeholder="...")
             items.append(item)
     return items
 
@@ -54,11 +69,26 @@ file_loader = FileSystemLoader("_templates")
 env = Environment(loader=file_loader)
 env.add_extension(MarkdownExtension)
 env.filters["short_url"] = generate_short_url
+_MD_INLINE_BULLET = re.compile(r'\s+\*\s+(?=[A-Z0-9"“(])')
+_MD_LIST_ITEM = re.compile(r'^(?:[*+-]|\d+[.)])\s+\S')
 def _markdown_no_headers(text):
-    lines = text.split('\n')
+    lines = []
+    for line in text.split('\n'):
+        # bullets pasted on one line ("explores: * Why X * The Y * Z"): 2+ " * Capitalised" -> one item per line
+        if line.count('**') % 2:                  # an unpaired ** would print literally: drop the last one
+            _k = line.rfind('**')
+            line = line[:_k] + line[_k + 2:]
+        if len(_MD_INLINE_BULLET.findall(line)) >= 2:
+            lines.extend(_MD_INLINE_BULLET.sub('\n* ', line).split('\n'))
+        else:
+            lines.append(line)
     cleaned = []
     for line in lines:
         stripped = line.lstrip()
+        # a list straight under a paragraph ("covering:\n* item") needs a blank line first, or markdown
+        # prints the "* " literally
+        if _MD_LIST_ITEM.match(stripped) and cleaned and cleaned[-1].strip() and not _MD_LIST_ITEM.match(cleaned[-1].lstrip()):
+            cleaned.append('')
         if stripped.startswith('#'):
             # convert "#### Heading" → "**Heading**"
             heading_text = stripped.lstrip('#').strip()
@@ -67,6 +97,7 @@ def _markdown_no_headers(text):
             cleaned.append(line)
     return markdown.markdown('\n'.join(cleaned))
 env.filters["markdown"] = _markdown_no_headers
+env.filters["plain"] = md_plain
 def dedupe(items):
      present = set()
      output = []
