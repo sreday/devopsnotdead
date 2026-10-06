@@ -509,23 +509,21 @@
   .sc-track { --sc: var(--brand); margin-bottom: 2.75rem; scroll-margin-top: 90px; }
   .sc-track.sc-t2 { --sc: #c2410c; } .sc-track.sc-t3 { --sc: #0f766e; } .sc-track.sc-t4 { --sc: #6d28d9; }
   .sc-head { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; padding-bottom: .7rem; border-bottom: 1px solid #d9dde3; }
-  .sc-badge { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+  .sc-badge { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
     color: var(--sc); border: 1.5px solid var(--sc); border-radius: 5px; padding: 1px 7px; }
   .sc-room { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.35rem; color: #1f2328; }
-  .sc-where { margin-left: auto; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; color: #6b7280; }
   .sc-list { list-style: none; margin: 0; padding: 0; }
   .sc-row { display: flex; gap: 1.1rem; padding: .7rem 0; border-bottom: 1px solid #e3e6ea; }
-  .sc-time { flex: 0 0 3.6rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .92rem; color: #6b7280; padding-top: .1rem; }
+  .sc-time { flex: 0 0 3.6rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .95rem; color: var(--brand); padding-top: .1rem; }
   .sc-body { flex: 1; min-width: 0; }
-  .sc-pill { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .68rem; font-weight: 700;
+  .sc-pill { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: .62rem; font-weight: 700;
     letter-spacing: .08em; text-transform: uppercase; color: var(--sc); border: 1.5px solid var(--sc); border-radius: 5px; padding: 0 6px; margin-bottom: .3rem; }
   .sc-title { display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.02rem; line-height: 1.35; color: #1f2328; text-decoration: none; }
   .sc-title:hover { color: var(--sc); text-decoration: underline; }
   .sc-who { font-size: .88rem; color: #1f2328; margin-top: .15rem; }
   .sc-org, .sc-dur { color: #6b7280; }
   .sc-break .sc-body { font-style: italic; color: #6b7280; }
-  .sc-foot { font-size: .85rem; color: #6b7280; margin-top: -1.5rem; }
-  @media (max-width: 575.98px) { .sc-where { margin-left: 0; width: 100%; } .sc-time { flex-basis: 3rem; font-size: .85rem; } .sc-row { gap: .7rem; } }
+  @media (max-width: 575.98px) { .sc-time { flex-basis: 3rem; font-size: .85rem; } .sc-row { gap: .7rem; } }
   .schedule-grid-table {
     width: 100%;
     border-collapse: collapse;
@@ -1461,7 +1459,7 @@
 
 
       <div class="sc-track sc-t1" id="track-c-0-1">
-        <div class="sc-head"><span class="sc-badge">Track 1</span><span class="sc-room">Screen 1</span><span class="sc-where">DevOpsNotDead London &middot; Fri Mar 13</span></div>
+        <div class="sc-head"><span class="sc-badge">Track 1</span><span class="sc-room">Screen 1</span></div>
         <ol class="sc-list">
 
           <li class="sc-row">
@@ -1637,7 +1635,7 @@
 
 
       <div class="sc-track sc-t2" id="track-c-0-2">
-        <div class="sc-head"><span class="sc-badge">Track 2</span><span class="sc-room">Screen 2</span><span class="sc-where">DevOpsNotDead London &middot; Fri Mar 13</span></div>
+        <div class="sc-head"><span class="sc-badge">Track 2</span><span class="sc-room">Screen 2</span></div>
         <ol class="sc-list">
 
           <li class="sc-row sc-break">
@@ -1780,7 +1778,7 @@
 
 
       <div class="sc-track sc-t3" id="track-c-0-3">
-        <div class="sc-head"><span class="sc-badge">Track 3</span><span class="sc-room">Screen 3</span><span class="sc-where">DevOpsNotDead London &middot; Fri Mar 13</span></div>
+        <div class="sc-head"><span class="sc-badge">Track 3</span><span class="sc-room">Screen 3</span></div>
         <ol class="sc-list">
 
           <li class="sc-row sc-break">
@@ -1921,9 +1919,6 @@
         </ol>
       </div>
 
-
-
-      <p class="sc-foot">Tap a title for the abstract.</p>
     </div>
 
     <!-- Table View -->
