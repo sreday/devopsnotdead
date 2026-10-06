@@ -487,8 +487,8 @@
   /* Table view */
   .schedule-table-view { display: none; }
   .schedule-table-view.active { display: block; }
-  /* one track: the table at half the width, centred (Marek 2026-10-06); full width on phones */
-  @media (min-width: 768px) { .schedule-table-view.single-track { max-width: 50%; margin: 0 auto; } }
+  /* one track: the table at 60% width, centred (Marek 2026-10-06); full width on phones */
+  @media (min-width: 768px) { .schedule-table-view.single-track { max-width: 60%; margin: 0 auto; } }
   .schedule-timeline-view { display: block; }
   .schedule-timeline-view.hidden { display: none; }
   /* view switch (Normal / Compact / Table), same slider pill as the sponsorship page's currency switch */
@@ -626,9 +626,9 @@
   .track-section-header {
     background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
     color: white;
-    padding: 1rem 1.5rem;
-    margin: 2rem 0 0 0;
-    border-radius: 4px 4px 0 0;
+    padding: 1rem 1.75rem;
+    margin: 2rem 0 .75rem 0;
+    border-radius: 999px;                                   /* a pill across the full width (Marek 2026-10-06) */
     font-size: 1.25rem;
     font-weight: 700;
   }
@@ -680,7 +680,7 @@
     <!-- Timeline View (default) -->
     <div id="timeline-view-0" class="schedule-timeline-view">
 
-      <div class="track-section-header" id="track-0-1">screen 1 &bull; Track 1</div>
+      <div class="track-section-header" id="track-0-1">Track 1 &bull; screen 1</div>
       <div class="schedule-tab-content">
         <div class="tab-pane active">
 
@@ -979,7 +979,7 @@
         </div>
       </div>
 
-      <div class="track-section-header" id="track-0-2">screen 2 &bull; Track 2</div>
+      <div class="track-section-header" id="track-0-2">Track 2 &bull; screen 2</div>
       <div class="schedule-tab-content">
         <div class="tab-pane active">
 
@@ -1221,7 +1221,7 @@
         </div>
       </div>
 
-      <div class="track-section-header" id="track-0-3">screen 3 &bull; Track 3</div>
+      <div class="track-section-header" id="track-0-3">Track 3 &bull; screen 3</div>
       <div class="schedule-tab-content">
         <div class="tab-pane active">
 
@@ -2974,6 +2974,8 @@
       };
       var saved = null;
       try { saved = localStorage.getItem('scheduleView'); } catch (e) {}
+      // phones open on the compact lineup unless the visitor picked a view before (Marek 2026-10-06)
+      if (!saved && window.matchMedia && matchMedia('(max-width: 767.98px)').matches) saved = 'compact';
       if (saved && saved !== 'normal') setScheduleView(saved);
       requestAnimationFrame(svAll);
       window.addEventListener('load', svAll);
