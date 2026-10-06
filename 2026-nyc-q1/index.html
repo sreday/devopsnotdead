@@ -1672,7 +1672,8 @@
           if (cp) cp.classList.toggle('active', v === 'compact');
           if (tb) tb.classList.toggle('active', v === 'table');
           if (links) {
-            links.style.display = v === 'table' ? 'none' : 'flex';
+            // hidden but still taking its space, so the view switch next to it never moves (Marek 2026-10-05)
+            links.style.visibility = v === 'table' ? 'hidden' : '';
             links.querySelectorAll('a[href^="#track-"]').forEach(function (a) {
               a.setAttribute('href', a.getAttribute('href').replace(/^#track-(c-)?/, v === 'compact' ? '#track-c-' : '#track-'));
             });
@@ -2151,6 +2152,30 @@
   .modal-speaker .desc {
     padding-bottom: 0.125rem;
   }
+  /* speaker modal, liquid glass (Marek 2026-10-05, option 01 "Frosted sheet"): one frosted pane over the blurred
+     page; the header lets the page glow through, the reading area turns more opaque; headshot shown raw */
+  body:has(.modal-speaker.show) .modal-backdrop.show { --bs-backdrop-opacity: 1; background: rgba(20,16,24,.28);
+    -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); }
+  .modal-speaker .modal-content { background: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.75); border-radius: 32px; overflow: hidden;
+    -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 0 24px 60px rgba(20,10,30,.25), inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(255,255,255,.3); }
+  .modal-speaker .modal-body > .theme-bg-light { background: transparent !important; }
+  .modal-speaker .profile-image { width: 140px; border-radius: 0; border: 0; box-shadow: none; filter: none; }
+  .modal-speaker h2.name { font-size: 2rem; }
+  .modal-speaker .meta { color: #5f5a63; font-size: 1.05rem; }
+  .modal-speaker .social-list a { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: var(--brand);
+    background: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.85); box-shadow: inset 0 1px 0 #fff; font-size: 1rem; }
+  .modal-speaker .talk-title-bar { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; padding: 1.1rem 2rem;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--brand) 85%, transparent), color-mix(in srgb, var(--brand) 65%, transparent));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.35); }
+  .modal-speaker .desc { background: rgba(255,255,255,.86); padding: 1.6rem 2.6rem .4rem !important; }
+  .modal-speaker .desc:last-child { padding-bottom: 2.2rem !important; }
+  .modal-speaker .desc h5 { font-family: 'Montserrat', sans-serif; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .6rem; }
+  .modal-speaker .modal-close-btn { top: 18px; right: 18px; width: 42px; height: 42px; padding: 0; border-radius: 50%; font-size: 1.7rem;
+    display: grid; place-items: center; color: #1d1b20; background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.85);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 4px 14px rgba(0,0,0,.12), inset 0 1px 0 #fff; }
+  .modal-speaker .modal-close-btn:hover { background: rgba(255,255,255,.9); color: var(--brand); }
+  @media (max-width: 575.98px) { .modal-speaker .modal-content { border-radius: 24px; } .modal-speaker .desc { padding: 1.2rem 1.3rem .3rem !important; } }
 </style>
 
 
@@ -2163,7 +2188,7 @@
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Jessica Garson DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Jessica Garson DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2185,9 +2210,7 @@
 <p>For this talk, I’ll focus on points of failure, lessons learned, and practical solutions, ranging from troubleshooting scripts to touring checklists for venues with varying constraints and internet access concerns.</p>
 <p>Whether you’ve coded on stage or deployed to production at 2 a.m., this talk shows how to design systems that withstand pressure and unpredictability.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2209,7 +2232,7 @@
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Birol Yildiz DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Birol Yildiz DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2235,9 +2258,7 @@
 </ul>
 <p>See how ilert is evolving the SRE toolkit to ensure that by the time a human logs in, the service is already restored.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2258,7 +2279,7 @@
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Leon Adato DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Leon Adato DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2280,9 +2301,7 @@
 <p>BUT... If we take the time to really listen, Tolkien's Legendarium contains relevant and compelling lessons for seasoned I.T. practitioners. Seen in the right light (not just the setting sun of Durin's Day) we can find models for handling all types of technical challenges.</p>
 <p>In this talk, I'll speak of far-sighted elves, underestimated hobbits, mysterious wizards, and of course of rings (Tolkien rather than token). But in the process I'll share a dragon's hoard of insights for the problems we find in our middleware, rather than Middle Earth.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2306,7 +2325,7 @@
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Sadio Jonas DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Sadio Jonas DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2326,9 +2345,7 @@
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>This talk explores how AI is collapsing the traditional software development lifecycle and breaking long held linear DevOps assumptions, pushing meaningful work earlier through AI enabled prototyping and tighter collaboration across development, operations, and business teams. Drawing from real leadership lessons, it covers what actually reduced rework, what failed in practice, and how teams can adapt safely as these shifts accelerate.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2350,7 +2367,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Diamond Bishop DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Diamond Bishop DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2370,9 +2387,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>As AI agents increasingly act autonomously in production systems, devops expands into evaluation, observability, and all of the above. This talk explores how to observe, improve, and debug AI agents in ways we did not have to think about for standard software services. I'll cover AI agent eval, monitoring, sandboxing best practices, and failure modes unique to agent-driven systems. Because when your software makes decisions on its own, someone still needs to be watching (it's agents all the way down).</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2393,7 +2408,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Josh Lee DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Josh Lee DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2414,9 +2429,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <p><p>A language is more than just the syntax and semantic rules of the words themselves. It also encompasses the shared culture of the speakers. With the proliferation of programming languages as well as the deeply held cultural beliefs of the community, it's easy to see that learning DevOps is like trying to learn a foreign language.</p>
 <p>I will review five foundational hypotheses from the field of Second Language Acquisition and relate these hypotheses back to the world of DevOps. DevOps practitioners, trainers, tool builders, and learners should all come away with useful insights to apply to their practice.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2437,7 +2450,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/James Brookbank DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/James Brookbank DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2457,9 +2470,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>DORA is the largest and longest running research program of its kind, that seeks to understand the capabilities that drive software delivery and operations performance.  Our latest report is the 2025 State of AI-assisted Software Development, which reveals AI’s primary role is as an amplifier magnifying an organization’s existing strengths and weaknesses. The greatest returns on AI investment come not from the tools themselves, but from a strategic focus on the underlying organizational system. This year’s research also introduces the new DORA AI Capabilities Model, which identifies the key technical and cultural practices that are proven to amplify the positive impacts of AI on performance.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2480,7 +2491,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Nishkarsh Raj DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Nishkarsh Raj DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2500,9 +2511,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>We built a AI FinOps platform in 2 weeks with Kiro and AWS Bedrock that found $2M in annual AWS waste— without buying expensive tools. 13 automated scanners, gamified leaderboards, AI recommendations, and one-click cleanup. I'll show you exactly how we did it and how you can too.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2523,7 +2532,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Akash Thakur DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Akash Thakur DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2544,9 +2553,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <p><p>AI systems are rapidly evolving from assistive tools into autonomous decision-makers operating in production environments. While most organizations still evaluate AI success primarily through accuracy, latency, or model performance—often overlooking reliability, failure modes, and human trust.</p>
 <p>In this talk, I will introduce AI Reliability Engineering (AIRE)—an emerging discipline that applies Site Reliability Engineering principles to AI-driven systems. I will explore how AI fails differently than traditional software, why AI-related incidents often go undetected, and how foundational SRE concepts such as SLOs, error budgets, observability, and graceful degradation must evolve to support reliable AI workloads at scale.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2567,7 +2574,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Avinash Sabat DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Avinash Sabat DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2588,9 +2595,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <p><p>In every fantasy world, chaos erupts when realms drift apart - and modern platforms are no different. Development, staging, and production environments often diverge, creating configuration drift, broken releases, and late-night firefighting.</p>
 <p>This talk explores how GitOps becomes the single source of truth, binding all environments under one declarative contract. We’ll walk through practical patterns for environment overlays, progressive promotion, and policy enforcement — ensuring that what is tested in one realm is exactly what reaches the final battlefield: production.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2611,7 +2616,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Mahender Mangalasri DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Mahender Mangalasri DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2631,9 +2636,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Dependency Dragons and Code Goblins are the hidden security threats buried in builds, originating from unvetted third-party dependencies and the insecure code developed. Dependency Dragons lurk inside third-party libraries , while Code Goblins appear from improper secure coding practices.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
@@ -2654,7 +2657,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Mark Pawlikowski DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Mark Pawlikowski DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2675,9 +2678,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <p><p>Mark crossed the Atlantic from London to NYC through a full blown snowstorm just to don a Gandalf grade beard in person.</p>
 <p>He commandeered the opening slot like a benevolent wizard of uptime to unpack the origin story of the assignment, trace the architectural lineage of the idea, and outline the deployment plan for making the very first DevOps Not Dead an event worthy of a permanent entry in the changelog.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
           </div><!--//modal-body-->
       </div><!--//modal-content-->
@@ -2693,7 +2694,7 @@ She partners with organizations and their leadership teams to navigate enterpris
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Chinmay Gaikwad DnD.png" alt="" />
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 mx-auto" src="../speakers/Chinmay Gaikwad DnD.png" alt="" />
                       </div>
 
                       <div class="col text-center text-md-start mx-auto">
@@ -2713,9 +2714,7 @@ She partners with organizations and their leadership teams to navigate enterpris
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>This talk explores how agentic AI can be applied to build enterprise-ready CI/CD pipelines that are faster, safer, and easier to operate at scale. Chinmay will walk through how autonomous agents can make decisions across build, test, and deployment workflows, reducing manual intervention while improving reliability and governance. Attendees will gain a practical view of how AI-driven automation fits into modern CI/CD platforms and what it takes to move from experimental pipelines to production-grade delivery systems.</p></p>
               </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
+
 
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
