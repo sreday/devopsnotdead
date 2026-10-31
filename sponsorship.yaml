@@ -1,6 +1,6 @@
 tiers:
   - id: leads
-    name: "Conference Leads"
+    name: "Conference Leads + On-site badge scanner"
     highlight: false
     requires: "Cannot be purchased solo"
     price:
